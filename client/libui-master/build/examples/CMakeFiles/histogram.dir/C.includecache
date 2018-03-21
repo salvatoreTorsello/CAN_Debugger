@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/giovannidispoto/desktop/libui-master/examples/histogram/main.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+time.h
+-
+../../ui.h
+/Users/giovannidispoto/desktop/libui-master/ui.h
+
+/Users/giovannidispoto/desktop/libui-master/ui.h
+stddef.h
+-
+stdint.h
+-
+

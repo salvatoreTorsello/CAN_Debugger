@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc   --std=c99 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.8 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -fvisibility=hidden CMakeFiles/histogram.dir/histogram/main.c.o  -o ../out/histogram  ../out/libui.A.dylib -Wl,-rpath,@executable_path/ 

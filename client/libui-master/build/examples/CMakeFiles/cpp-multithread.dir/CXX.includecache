@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/giovannidispoto/desktop/libui-master/examples/cpp-multithread/main.cpp
+thread
+-
+chrono
+-
+mutex
+-
+condition_variable
+-
+string.h
+-
+stdlib.h
+-
+time.h
+-
+../../ui.h
+/Users/giovannidispoto/desktop/libui-master/ui.h
+
+/Users/giovannidispoto/desktop/libui-master/ui.h
+stddef.h
+-
+stdint.h
+-
+
