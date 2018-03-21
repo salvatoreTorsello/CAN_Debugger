@@ -1,0 +1,33 @@
+main
+	init
+		setAllPinAsDigital
+		UART1_Init
+			Get_Fosc_kHz
+			Get_Fosc_Per_Cyc
+			Delay_100ms
+			_Multiply_32x32
+			_Modulus_32x32
+			_Divide_32x32
+		setTimer
+			setInterruptPriority
+			getTimerPrescaler
+				getExactTimerPrescaler
+					_Mul_FP
+					_Div_FP
+				_Float2Longint
+			getTimerPeriod
+				_Mul_FP
+				_Long2Float
+				_Div_FP
+				_Float2Longint
+	setPort
+	turnOnTimer
+	UART1_Write_Text
+		UART1_Write
+onUART1Ready
+	UART1_Read_Text
+		UART1_Data_Ready
+		UART1_Read
+	strcmp
+timer1_interrupt
+	UART1_Write_Text
