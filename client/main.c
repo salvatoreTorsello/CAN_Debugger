@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
      clilen = sizeof(cli_addr);
      newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
      
-     printf("Client infos:\n IP: %d\nPort: %d\n", cli_addr.sin_addr.s_addr, cli_addr.sin_port);
+     printf("Client infos:\nIP: %s\n", inet_ntoa(cli_addr.sin_addr));
 
      if (newsockfd < 0){ 
           perror("ERROR on accept");
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 
      printf("Here is the message: %s\n",buffer);
 
-     n = write(newsockfd,"I got your message",18);
+     n = write(newsockfd,"I got your message\n",18);
 
      if (n < 0){ 
         perror("ERROR writing to socket");
