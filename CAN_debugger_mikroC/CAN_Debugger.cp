@@ -1,6 +1,6 @@
-#line 1 "C:/Users/Salvatore/Desktop/CAN Debugger/CAN_Debugger.c"
-#line 1 "c:/users/salvatore/desktop/can debugger/libs/can.h"
-#line 48 "c:/users/salvatore/desktop/can debugger/libs/can.h"
+#line 1 "C:/Users/Salvatore/Documents/gitKraken repositories/Personali/CAN_Debugger/CAN_debugger_mikroC/CAN_Debugger.c"
+#line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/libs/can.h"
+#line 48 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/libs/can.h"
 void Can_init(void);
 
 void Can_read(unsigned long int *id, char dataBuffer[], unsigned int *dataLength, unsigned int *inFlags);
@@ -32,9 +32,9 @@ void Can_clearB1Flag(void);
 void Can_clearInterrupt(void);
 
 void Can_initInterrupt(void);
-#line 1 "c:/users/salvatore/desktop/can debugger/libs/dspic.h"
-#line 1 "c:/users/salvatore/desktop/can debugger/libs/basic.h"
-#line 16 "c:/users/salvatore/desktop/can debugger/libs/basic.h"
+#line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/libs/dspic.h"
+#line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/libs/basic.h"
+#line 16 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/libs/basic.h"
 void unsignedIntToString(unsigned int number, char *text);
 
 void signedIntToString(int number, char *text);
@@ -44,7 +44,7 @@ unsigned char getNumberDigitCount(unsigned char number);
 void emptyString(char* myString);
 
 int asciiHexToInt(char* string, int lenght);
-#line 171 "c:/users/salvatore/desktop/can debugger/libs/dspic.h"
+#line 171 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/libs/dspic.h"
 void setAllPinAsDigital(void);
 
 void setInterruptPriority(unsigned char device, unsigned char priority);
@@ -102,16 +102,61 @@ void setAnalogVoltageReference(unsigned char mode);
 void setAnalogDataOutputFormat(unsigned char adof);
 
 int getMinimumAnalogClockConversion(void);
-#line 1 "c:/users/salvatore/desktop/can debugger/modules/d_can.h"
-#line 7 "C:/Users/Salvatore/Desktop/CAN Debugger/CAN_Debugger.c"
+#line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/d_can.h"
+#line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/ethernet.h"
+#line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/../ethv2 demo/__ethenc28j60.h"
+#line 120 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/../ethv2 demo/__ethenc28j60.h"
+typedef struct
+ {
+ unsigned char valid;
+ unsigned long tmr;
+ unsigned char ip[4];
+ unsigned char mac[6];
+ } SPI_Ethernet_arpCacheStruct;
+
+extern SPI_Ethernet_arpCacheStruct SPI_Ethernet_arpCache[];
+
+extern unsigned char SPI_Ethernet_macAddr[6];
+extern unsigned char SPI_Ethernet_ipAddr[4];
+extern unsigned char SPI_Ethernet_gwIpAddr[4];
+extern unsigned char SPI_Ethernet_ipMask[4];
+extern unsigned char SPI_Ethernet_dnsIpAddr[4];
+extern unsigned char SPI_Ethernet_rmtIpAddr[4];
+
+extern unsigned long SPI_Ethernet_userTimerSec;
+
+typedef struct {
+ unsigned canCloseTCP: 1;
+ unsigned isBroadcast: 1;
+} TEthPktFlags;
+#line 147 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/../ethv2 demo/__ethenc28j60.h"
+extern void SPI_Ethernet_Init(unsigned char *resetPort, unsigned char resetBit, unsigned char *CSport, unsigned char CSbit, unsigned char *mac, unsigned char *ip, unsigned char fullDuplex);
+extern unsigned char SPI_Ethernet_doPacket();
+extern void SPI_Ethernet_putByte(unsigned char b);
+extern void SPI_Ethernet_putBytes(unsigned char *ptr, unsigned int n);
+extern void SPI_Ethernet_putConstBytes(const unsigned char *ptr, unsigned int n);
+extern unsigned char SPI_Ethernet_getByte();
+extern void SPI_Ethernet_getBytes(unsigned char *ptr, unsigned int addr, unsigned int n);
+extern unsigned int SPI_Ethernet_UserUDP(unsigned char *remoteHost, unsigned int remotePort, unsigned int localPort, unsigned int reqLength);
+extern unsigned int SPI_Ethernet_UserTCP(unsigned char *remoteHost, unsigned int remotePort, unsigned int localPort, unsigned int reqLength, char * canClose);
+extern void SPI_Ethernet_confNetwork(char *ipMask, char *gwIpAddr, char *dnsIpAddr);
+#line 15 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/ethernet.h"
+sfr sbit SPI_Ethernet_Rst at RE8_bit;
+sfr sbit SPI_Ethernet_CS at RD3_bit;
+sfr sbit SPI_Ethernet_Rst_Direction at TRISE8_bit;
+sfr sbit SPI_Ethernet_CS_Direction at TRISD3_bit;
+#line 26 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/ethernet.h"
+void ethernetInit(void);
+
+unsigned int SPI_Ethernet_UserTCP(unsigned char *remoteHost, unsigned int remotePort, unsigned int localPort, unsigned int reqLength, TEthPktFlags *flags);
+#line 7 "C:/Users/Salvatore/Documents/gitKraken repositories/Personali/CAN_Debugger/CAN_debugger_mikroC/CAN_Debugger.c"
 int timer1Counter = 0;
 
 void init()
 {
  setAllPinAsDigital();
-
- UART1_Init( 9600 );
- setTimer(1, 0.5);
+ ethernetInit();
+ setTimer(1, 1);
 
  delay_ms(200);
 }
@@ -126,34 +171,24 @@ void main()
  init();
  setPort();
  turnOnTimer(1);
- UART1_Write_Text("Acceso");
+
+
 
  while(1)
  {
-#line 37 "C:/Users/Salvatore/Desktop/CAN Debugger/CAN_Debugger.c"
+ delay_ms(500);
+ PORTEbits.RE0 = ~PORTEbits.RE0;
  }
-}
 
-void onUART1Ready() iv IVT_ADDR_U1RXINTERRUPT ics ICS_AUTO
-{
-if(timer1Counter % 2 != 1){
- char * output;
-
- UART1_Read_Text(output, '\0', 255);
-
- PORTEbits.RE0 = strcmp(output, "Acceso") == 1 ? 0 : 0;
-
- IFS0bits.U1RXIF = 0;
-
- }
 
 }
 
  void timer1_interrupt() iv IVT_ADDR_T1INTERRUPT ics ICS_AUTO 
 {
  timer1Counter++;
-if(timer1Counter % 2 == 0){
- UART1_Write_Text("Acceso");
- PORTEbits.RE0 = 1;
- }
+
+
+
+
+ clearTimer(1);
 }

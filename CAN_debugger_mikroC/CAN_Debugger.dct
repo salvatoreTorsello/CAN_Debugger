@@ -2474,6 +2474,7 @@ errie_bit
 errif
 errif
 errif_bit
+ethernetinit
 ewarn
 ewarn
 ewarn_bit
@@ -3667,6 +3668,8 @@ modf
 msten
 msten
 msten_bit
+myipaddr
+mymacaddr
 n
 n
 n_bit
@@ -4196,7 +4199,6 @@ oerr_bit
 oerr_u1sta_bit
 oerr_u2sta_bit
 olatb_bank0
-onuart1ready
 opmode
 opmode_0
 opmode_0_bit
@@ -4771,6 +4773,7 @@ progop3
 progop4
 progop5
 progop6
+provastringa
 prseg
 prseg_0
 prseg_0_bit
@@ -5975,6 +5978,10 @@ spi_ethernet_arpresolve
 spi_ethernet_checksum
 spi_ethernet_clearbitreg
 spi_ethernet_confnetwork
+spi_ethernet_cs
+spi_ethernet_cs
+spi_ethernet_cs_direction
+spi_ethernet_cs_direction
 spi_ethernet_delay
 spi_ethernet_dhcpmsg
 spi_ethernet_dhcpreceive
@@ -6020,12 +6027,17 @@ spi_ethernet_readphy
 spi_ethernet_readreg
 spi_ethernet_renewdhcp
 spi_ethernet_rmtipaddr
+spi_ethernet_rst
+spi_ethernet_rst
+spi_ethernet_rst_direction
+spi_ethernet_rst_direction
 spi_ethernet_sendudp
 spi_ethernet_sendudp2
 spi_ethernet_setbitreg
 spi_ethernet_setrxreadaddress
 spi_ethernet_subnetbroadcast
 spi_ethernet_txpacket
+spi_ethernet_usertcp
 spi_ethernet_usertimersec
 spi_ethernet_writeaddr
 spi_ethernet_writemem

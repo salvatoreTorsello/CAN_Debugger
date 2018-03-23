@@ -1,13 +1,52 @@
 main
 	init
 		setAllPinAsDigital
-		UART1_Init
-			Get_Fosc_kHz
-			Get_Fosc_Per_Cyc
-			Delay_100ms
-			_Multiply_32x32
-			_Modulus_32x32
-			_Divide_32x32
+		ethernetInit
+			SPI1_Init
+			SPI_Ethernet_Init
+				Delay_1us
+				SPI_Ethernet_delay
+					Delay_500us
+				memcpy
+				SPI_Ethernet_clearBitReg
+					Delay_1us
+					ADC1_Get_Sample
+					SPI1_Read
+				SPI_Ethernet_writeAddr
+					Delay_1us
+					ADC1_Get_Sample
+					SPI1_Read
+				SPI_Ethernet_setBitReg
+					Delay_1us
+					ADC1_Get_Sample
+					SPI1_Read
+				SPI_Ethernet_Init2
+					SPI_Ethernet_writeReg
+						Delay_1us
+						ADC1_Get_Sample
+						SPI1_Read
+					SPI_Ethernet_writeAddr
+					SPI_Ethernet_setBitReg
+					SPI_Ethernet_readReg
+						Delay_1us
+						ADC1_Get_Sample
+						SPI1_Read
+					SPI_Ethernet_readPHY
+						SPI_Ethernet_clearBitReg
+						SPI_Ethernet_setBitReg
+						SPI_Ethernet_writeReg
+						SPI_Ethernet_delay
+						SPI_Ethernet_readReg
+					SPI_Ethernet_writePHY
+						SPI_Ethernet_clearBitReg
+						SPI_Ethernet_setBitReg
+						SPI_Ethernet_writeReg
+						SPI_Ethernet_delay
+					SPI_Ethernet_delay
+					memset
+					SPI_Ethernet_clearBitReg
+				ADC1_Get_Sample
+				SPI1_Read
 		setTimer
 			setInterruptPriority
 			getTimerPrescaler
@@ -22,12 +61,5 @@ main
 				_Float2Longint
 	setPort
 	turnOnTimer
-	UART1_Write_Text
-		UART1_Write
-onUART1Ready
-	UART1_Read_Text
-		UART1_Data_Ready
-		UART1_Read
-	strcmp
 timer1_interrupt
-	UART1_Write_Text
+	clearTimer
