@@ -1,0 +1,38 @@
+0	1	mikroCdsPIC.exe -MSF -DBG -pP30F4011 -DL -SSA -O11111114 -fo80 -N"C:\Users\Salvatore\Documents\gitKraken repositories\Personali\CAN_Debugger\Online examples\EthV2 Demo\EthV2_Demo.mcpds" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for dsPIC\defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for dsPIC\uses\" -SP"C:\Users\Salvatore\Documents\gitKraken repositories\Personali\CAN_Debugger\Online examples\EthV2 Demo\" "EthV2_Demo.c" "httpUtils.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_CString.mcl" "__Lib_CStdlib.mcl" "__Lib_Conversions.mcl" "__Lib_Time.mcl" "__Lib_SPI_1.mcl" "__Lib_PortExpander.mcl" "__Lib_LcdConsts.mcl" "__Lib_Lcd.mcl" "__Lib_SPILcd.mcl" "__Lib_EthEnc28j60.mcl"	 
+diagnostics: 0	121	Loading...	 
+diagnostics: 0	122	Compilation Started	timelib.h
+hint: 0	1004	interrupt handler (Timer1Int at 0x001A)	EthV2_Demo.c
+error: 1191	324	Undeclared identifier 'PLLPRE_0_bit' in expression	EthV2_Demo.c
+error: 1192	324	Undeclared identifier 'PLLPRE_1_bit' in expression	EthV2_Demo.c
+error: 1193	324	Undeclared identifier 'PLLPRE_2_bit' in expression	EthV2_Demo.c
+error: 1194	324	Undeclared identifier 'PLLPRE_3_bit' in expression	EthV2_Demo.c
+error: 1195	324	Undeclared identifier 'PLLPRE_4_bit' in expression	EthV2_Demo.c
+error: 1197	324	Undeclared identifier 'PLLFBD' in expression	EthV2_Demo.c
+error: 1199	324	Undeclared identifier 'PLLPOST_0_bit' in expression	EthV2_Demo.c
+error: 1200	324	Undeclared identifier 'PLLPOST_1_bit' in expression	EthV2_Demo.c
+error: 1202	324	Undeclared identifier 'ANSELA' in expression	EthV2_Demo.c
+error: 1203	324	Undeclared identifier 'ANSELB' in expression	EthV2_Demo.c
+error: 1204	324	Undeclared identifier 'ANSELC' in expression	EthV2_Demo.c
+error: 1205	324	Undeclared identifier 'ANSELD' in expression	EthV2_Demo.c
+error: 1206	324	Undeclared identifier 'ANSELE' in expression	EthV2_Demo.c
+error: 1207	324	Undeclared identifier 'ANSELG' in expression	EthV2_Demo.c
+error: 1209	324	Undeclared identifier 'PPS_Mapping' in expression	EthV2_Demo.c
+error: 1210	324	Undeclared identifier 'PPS_Mapping' in expression	EthV2_Demo.c
+error: 1211	324	Undeclared identifier 'PPS_Mapping' in expression	EthV2_Demo.c
+error: 1214	324	Undeclared identifier 'PPS_Mapping' in expression	EthV2_Demo.c
+error: 1215	324	Undeclared identifier 'PPS_Mapping' in expression	EthV2_Demo.c
+error: 1216	324	Undeclared identifier 'PPS_Mapping' in expression	EthV2_Demo.c
+error: 1230	324	Undeclared identifier 'SPI3_Init' in expression	EthV2_Demo.c
+error: 1232	324	Undeclared identifier 'SPI3_Read' in expression	EthV2_Demo.c
+warning: 1232	1508	Implicit conversion of int to ptr	EthV2_Demo.c
+error: 1232	324	Undeclared identifier 'SPI3_Write' in expression	EthV2_Demo.c
+warning: 1232	1508	Implicit conversion of int to ptr	EthV2_Demo.c
+error: 1253	324	Undeclared identifier 'SPI3_Read' in expression	EthV2_Demo.c
+warning: 1253	1508	Implicit conversion of int to ptr	EthV2_Demo.c
+error: 1253	324	Undeclared identifier 'SPI3_Write' in expression	EthV2_Demo.c
+warning: 1253	1508	Implicit conversion of int to ptr	EthV2_Demo.c
+diagnostics: 0	122	Compilation Started	httputils.h
+diagnostics: 311	123	Compiled Successfully	httpUtils.c
+hint: 161	1164	Variable 'len' has been eliminated by optimizer	httpUtils.c
+hint: 306	1164	Variable 'len' has been eliminated by optimizer	httpUtils.c
+error: 0	102	Finished (with errors): 24 mar 2018, 21:03:26	EthV2_Demo.mcpds

@@ -104,59 +104,45 @@ void setAnalogDataOutputFormat(unsigned char adof);
 int getMinimumAnalogClockConversion(void);
 #line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/d_can.h"
 #line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/ethernet.h"
-#line 1 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/../ethv2 demo/__ethenc28j60.h"
-#line 120 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/../ethv2 demo/__ethenc28j60.h"
+
+
+
+
+
+
+
+extern sfr sbit SPI_Ethernet_CS;
+extern sfr sbit SPI_Ethernet_RST;
+extern sfr sbit SPI_Ethernet_CS_Direction;
+extern sfr sbit SPI_Ethernet_RST_Direction;
+
+sbit SPI_Ethernet_CS at LATD3_bit;
+sbit SPI_Ethernet_Rst at LATE8_bit;
+sbit SPI_Ethernet_CS_Direction at TRISD3_bit;
+sbit SPI_Ethernet_Rst_Direction at TRISE8_bit;
+
 typedef struct
- {
- unsigned char valid;
- unsigned long tmr;
- unsigned char ip[4];
- unsigned char mac[6];
- } SPI_Ethernet_arpCacheStruct;
-
-extern SPI_Ethernet_arpCacheStruct SPI_Ethernet_arpCache[];
-
-extern unsigned char SPI_Ethernet_macAddr[6];
-extern unsigned char SPI_Ethernet_ipAddr[4];
-extern unsigned char SPI_Ethernet_gwIpAddr[4];
-extern unsigned char SPI_Ethernet_ipMask[4];
-extern unsigned char SPI_Ethernet_dnsIpAddr[4];
-extern unsigned char SPI_Ethernet_rmtIpAddr[4];
-
-extern unsigned long SPI_Ethernet_userTimerSec;
-
-typedef struct {
+{
  unsigned canCloseTCP: 1;
  unsigned isBroadcast: 1;
 } TEthPktFlags;
-#line 147 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/../ethv2 demo/__ethenc28j60.h"
-extern void SPI_Ethernet_Init(unsigned char *resetPort, unsigned char resetBit, unsigned char *CSport, unsigned char CSbit, unsigned char *mac, unsigned char *ip, unsigned char fullDuplex);
-extern unsigned char SPI_Ethernet_doPacket();
-extern void SPI_Ethernet_putByte(unsigned char b);
-extern void SPI_Ethernet_putBytes(unsigned char *ptr, unsigned int n);
-extern void SPI_Ethernet_putConstBytes(const unsigned char *ptr, unsigned int n);
-extern unsigned char SPI_Ethernet_getByte();
-extern void SPI_Ethernet_getBytes(unsigned char *ptr, unsigned int addr, unsigned int n);
-extern unsigned int SPI_Ethernet_UserUDP(unsigned char *remoteHost, unsigned int remotePort, unsigned int localPort, unsigned int reqLength);
-extern unsigned int SPI_Ethernet_UserTCP(unsigned char *remoteHost, unsigned int remotePort, unsigned int localPort, unsigned int reqLength, char * canClose);
-extern void SPI_Ethernet_confNetwork(char *ipMask, char *gwIpAddr, char *dnsIpAddr);
-#line 15 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/ethernet.h"
-sfr sbit SPI_Ethernet_Rst at RE8_bit;
-sfr sbit SPI_Ethernet_CS at RD3_bit;
-sfr sbit SPI_Ethernet_Rst_Direction at TRISE8_bit;
-sfr sbit SPI_Ethernet_CS_Direction at TRISD3_bit;
-#line 26 "c:/users/salvatore/documents/gitkraken repositories/personali/can_debugger/can_debugger_mikroc/modules/ethernet.h"
+
 void ethernetInit(void);
 
-unsigned int SPI_Ethernet_UserTCP(unsigned char *remoteHost, unsigned int remotePort, unsigned int localPort, unsigned int reqLength, TEthPktFlags *flags);
-#line 7 "C:/Users/Salvatore/Documents/gitKraken repositories/Personali/CAN_Debugger/CAN_debugger_mikroC/CAN_Debugger.c"
+unsigned int SPI_Ethernet_UserTCP(unsigned char *remoteHost, unsigned int remotePort, unsigned int localPort, unsigned int reqLength, TEthPktFlags * flags);
+
+unsigned int SPI_Ethernet_UserUDP(unsigned char *remoteHost, unsigned int remotePort, unsigned int localPort, unsigned int reqLength, TEthPktFlags *flags);
+#line 6 "C:/Users/Salvatore/Documents/gitKraken repositories/Personali/CAN_Debugger/CAN_debugger_mikroC/CAN_Debugger.c"
 int timer1Counter = 0;
+unsigned char IpDestAddr[4] = {169, 254, 117, 241};
+
+const unsigned char provaStringa[] = "dioPorcoSeee";
 
 void init()
 {
  setAllPinAsDigital();
  ethernetInit();
- setTimer(1, 1);
+ setTimer(1, 0.5);
 
  delay_ms(200);
 }
@@ -172,14 +158,10 @@ void main()
  setPort();
  turnOnTimer(1);
 
-
-
  while(1)
  {
- delay_ms(500);
- PORTEbits.RE0 = ~PORTEbits.RE0;
+ SPI_Ethernet_doPacket();
  }
-
 
 }
 

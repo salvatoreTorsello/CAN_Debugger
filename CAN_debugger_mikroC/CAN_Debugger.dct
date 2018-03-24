@@ -1801,6 +1801,7 @@ dlc3
 dlc3
 dlc3
 dlc3
+dnsipaddr
 doendh
 doendh_0
 doendh_0_bit
@@ -2669,6 +2670,7 @@ glcd_write_data
 glcd_write_text
 glcd_write_text_adv
 glcd_write_text_return_pos
+gwipaddr
 halfbits
 i2c1_init
 i2c1_is_idle
@@ -3267,6 +3269,7 @@ ipc6
 ipc6bits
 ipc9
 ipc9bits
+ipdestaddr
 ipl
 ipl_0
 ipl_0_bit
@@ -3280,6 +3283,7 @@ ipl2
 ipl3
 ipl3
 ipl3_bit
+ipmask
 ipmien
 ipmien
 ipmien_bit
@@ -6039,6 +6043,7 @@ spi_ethernet_subnetbroadcast
 spi_ethernet_txpacket
 spi_ethernet_usertcp
 spi_ethernet_usertimersec
+spi_ethernet_userudp
 spi_ethernet_writeaddr
 spi_ethernet_writemem
 spi_ethernet_writememory
